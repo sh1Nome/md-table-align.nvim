@@ -38,7 +38,7 @@ function M.calculate_column_widths(cells)
       -- col <= #cells[row] で「この行にこの列が存在するか」を確認
       if col <= #cells[row] then
         -- セルが存在する場合、その文字数を取得
-        local cell_len = #cells[row][col]
+        local cell_len = vim.fn.strwidth(cells[row][col])
         -- これまでの最大幅と比較し、より長い方を記録
         max_width = math.max(max_width, cell_len)
       end

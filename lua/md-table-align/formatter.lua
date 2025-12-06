@@ -7,7 +7,7 @@ local M = {}
 ---@param alignment string "left"、"center"、"right"
 ---@return string パディング済み文字列
 local function pad_string(str, width, alignment)
-  local str_len = #str
+  local str_len = vim.fn.strwidth(str)
 
   if str_len >= width then
     return str
