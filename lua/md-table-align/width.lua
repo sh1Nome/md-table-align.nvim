@@ -23,8 +23,11 @@ function M.calculate_column_widths(cells)
   end
 
   local widths = {}
-  -- 最初の行の列数を取得（全行が同じ列数と仮定）
-  local num_cols = #cells[1]
+  -- すべての行を走査して最大列数を取得
+  local num_cols = 0
+  for row = 1, #cells do
+    num_cols = math.max(num_cols, #cells[row])
+  end
 
   -- 各列ごとにループして、その列の最大幅を見つける
   for col = 1, num_cols do

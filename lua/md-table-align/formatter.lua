@@ -36,9 +36,10 @@ end
 ---@return string フォーマット済み行
 local function format_row(cells, widths, alignments)
   local formatted_cells = {}
-  for i = 1, #cells do
+  for i = 1, #widths do
     local alignment = alignments[i] or "left"
-    local padded = pad_string(cells[i], widths[i], alignment)
+    local cell_content = cells[i] or ""
+    local padded = pad_string(cell_content, widths[i], alignment)
     table.insert(formatted_cells, padded)
   end
   return "| " .. table.concat(formatted_cells, " | ") .. " |"
