@@ -1,15 +1,19 @@
 ---@class RegexModule
 local M = {}
 
----パイプで区切られたセルを抽出する（前後のスペース付き、空セルを除外）
+---パイプで区切られたセルを抽出する（前後のスペース付き）
 ---@param line string
----@return string[] セルのリスト（トリムなし、空セル除外）
+---@return string[] セルのリスト（トリムなし、行末の空セルは除外）
 function M.extract_cells(line)
   local cells = {}
   for cell in line:gmatch("|([^|]*)") do
-    local trimmed = cell:match("^%s*(.-)%s*$") or ""
-    if trimmed ~= "" then
-      table.insert(cells, cell)
+    table.insert(cells, cell)
+  end
+  -- 行末の空セル（最後のパイプの後）を除外
+  if #cells > 0 then
+    local trimmed = cells[#cells]:match("^%s*(.-)%s*$") or ""
+    if trimmed == "" then
+      table.remove(cells)
     end
   end
   return cells

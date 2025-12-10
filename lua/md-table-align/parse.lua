@@ -12,14 +12,13 @@ local function is_separator_line(line)
   local cells = regex.extract_cells(line)
   for _, cell in ipairs(cells) do
     local trimmed = regex.trim(cell)
-    if trimmed == "" then
-      return false
-    end
-    if not regex.is_separator_cell(trimmed) then
+    -- 空セルはスキップ、非空セルはセパレータセルである必要がある
+    if trimmed ~= "" and not regex.is_separator_cell(trimmed) then
       return false
     end
   end
-  return true
+  -- セル数が0以上あればセパレータ行
+  return #cells > 0
 end
 
 ---カーソル行からテーブルの境界を探す
