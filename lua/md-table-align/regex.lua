@@ -11,7 +11,7 @@ function M.extract_cells(line)
   end
   -- 行末の空セル（最後のパイプの後）を除外
   if #cells > 0 then
-    local trimmed = cells[#cells]:match("^%s*(.-)%s*$") or ""
+    local trimmed = M.trim(cells[#cells])
     if trimmed == "" then
       table.remove(cells)
     end
