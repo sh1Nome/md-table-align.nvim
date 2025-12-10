@@ -9,6 +9,7 @@ A Neovim plugin for aligning Markdown tables.
 - Aligns columns to uniform width
 - Respects alignment directives from separator rows
 - Ensures minimum 1 space between pipes and content
+- Pure Lua, with no external dependencies.
 
 ## Installation
 
