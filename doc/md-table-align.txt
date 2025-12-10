@@ -15,6 +15,7 @@ CONTENTS                                          *md-table-align-contents*
 - Aligns columns to uniform width
 - Respects alignment directives from separator rows
 - Ensures minimum 1 space between pipes and content
+- Pure Lua, with no external dependencies.
 
 ==============================================================================
 2. USAGE                                        *md-table-align-usage*
