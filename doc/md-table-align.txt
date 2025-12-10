@@ -1,0 +1,48 @@
+*md-table-align.txt*  A Neovim plugin for aligning Markdown tables
+
+==============================================================================
+CONTENTS                                          *md-table-align-contents*
+
+  1. Features                                     |md-table-align-features|
+  2. Usage                                        |md-table-align-usage|
+  3. Commands                                   |md-table-align-commands|
+  4. Key Mapping                             |md-table-align-keybindings|
+  5. License                                     |md-table-align-license|
+
+==============================================================================
+1. FEATURES                                      *md-table-align-features*
+
+- Aligns columns to uniform width
+- Respects alignment directives from separator rows
+- Ensures minimum 1 space between pipes and content
+
+==============================================================================
+2. USAGE                                        *md-table-align-usage*
+
+Use the |:MdTableAlign| command. This aligns the Markdown table containing
+the cursor. The plugin only aligns on command execution - it does not
+auto-align.
+
+==============================================================================
+3. COMMANDS                                    *md-table-align-commands*
+
+:MdTableAlign                                *:MdTableAlign*
+
+  Aligns the Markdown table containing the cursor.
+
+==============================================================================
+4. KEY MAPPING                              *md-table-align-keybindings*
+
+The following is an example of optional key mapping: >
+
+  vim.keymap.set('n', '<leader>ta', ':MdTableAlign<CR>', 
+    { noremap = true, silent = true })
+<
+
+==============================================================================
+5. LICENSE                                      *md-table-align-license*
+
+MIT
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:

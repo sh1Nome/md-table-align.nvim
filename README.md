@@ -22,7 +22,7 @@ Use your favorite package manager.
 :MdTableAlign
 ```
 
-Aligns the Markdown table containing the cursor. The plugin only aligns on command execution—it does not auto-align.
+Aligns the Markdown table containing the cursor. The plugin only aligns on command execution - it does not auto-align.
 
 ### Key Mapping (Optional)
 
