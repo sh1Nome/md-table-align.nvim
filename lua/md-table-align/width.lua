@@ -17,41 +17,41 @@ local M = {}
 ---@param cells string[][] セル内容の行列（例：{{"Name", "Age"}, {"Alice", "30"}}）
 ---@return integer[] 列幅の配列（各列の最大幅、最小3）
 function M.calculate_column_widths(cells)
-  -- セルが空の場合は空の配列を返す
-  if #cells == 0 then
-    return {}
-  end
+	-- セルが空の場合は空の配列を返す
+	if #cells == 0 then
+		return {}
+	end
 
-  local widths = {}
-  -- すべての行を走査して最大列数を取得
-  local num_cols = 0
-  for row = 1, #cells do
-    num_cols = math.max(num_cols, #cells[row])
-  end
+	local widths = {}
+	-- すべての行を走査して最大列数を取得
+	local num_cols = 0
+	for row = 1, #cells do
+		num_cols = math.max(num_cols, #cells[row])
+	end
 
-  -- 各列ごとにループして、その列の最大幅を見つける
-  for col = 1, num_cols do
-    -- 列幅の初期値：Markdownセパレータ "---" の最小長は3文字
-    local max_width = 3
-    
-    -- 同じ列について、すべての行をループ
-    for row = 1, #cells do
-      -- 注意：行によって列数が異なる場合がある
-      -- 例：1行目は3列、2行目は2列（不完全なテーブル）
-      -- col <= #cells[row] で「この行にこの列が存在するか」を確認
-      if col <= #cells[row] then
-        -- セルが存在する場合、その文字数を取得
-        local cell_len = vim.fn.strwidth(cells[row][col])
-        -- これまでの最大幅と比較し、より長い方を記録
-        max_width = math.max(max_width, cell_len)
-      end
-    end
-    
-    -- この列の最大幅を widths 配列に追加
-    table.insert(widths, max_width)
-  end
+	-- 各列ごとにループして、その列の最大幅を見つける
+	for col = 1, num_cols do
+		-- 列幅の初期値：Markdownセパレータ "---" の最小長は3文字
+		local max_width = 3
 
-  return widths
+		-- 同じ列について、すべての行をループ
+		for row = 1, #cells do
+			-- 注意：行によって列数が異なる場合がある
+			-- 例：1行目は3列、2行目は2列（不完全なテーブル）
+			-- col <= #cells[row] で「この行にこの列が存在するか」を確認
+			if col <= #cells[row] then
+				-- セルが存在する場合、その文字数を取得
+				local cell_len = vim.fn.strwidth(cells[row][col])
+				-- これまでの最大幅と比較し、より長い方を記録
+				max_width = math.max(max_width, cell_len)
+			end
+		end
+
+		-- この列の最大幅を widths 配列に追加
+		table.insert(widths, max_width)
+	end
+
+	return widths
 end
 
 return M
