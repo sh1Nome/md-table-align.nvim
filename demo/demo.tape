@@ -9,6 +9,17 @@ Set Height 540
 Set Padding 0
 
 # Type a command in the terminal.
+Hide
+
+Type 'NVIM_DEMO_CONFIG="$(pwd)/demo.lua"'
+Enter
+Type 'nvim() { command nvim -u "$NVIM_DEMO_CONFIG"; }'
+Enter
+Type 'clear'
+Enter
+
+Show
+
 Sleep 500ms
 
 Type "nvim"
