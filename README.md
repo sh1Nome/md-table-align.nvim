@@ -2,7 +2,7 @@
 
 A Neovim plugin for aligning Markdown tables.
 
-![demo](demo.gif)
+![demo](./demo/demo.gif)
 
 ## Features
 
