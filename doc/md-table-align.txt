@@ -36,8 +36,9 @@ auto-align.
 
 The following is an example of optional key mapping: >
 
-  vim.keymap.set('n', '<leader>ta', ':MdTableAlign<CR>', 
-    { noremap = true, silent = true })
+  vim.keymap.set("n", "<leader>t", function()
+          require("md-table-align").align_table()
+  end, { desc = "Align a markdown table" })
 <
 
 ==============================================================================

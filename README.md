@@ -28,6 +28,8 @@ Aligns the Markdown table containing the cursor. The plugin only aligns on comma
 ### Key Mapping (Optional)
 
 ```lua
-vim.keymap.set('n', '<leader>ta', ':MdTableAlign<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>t", function()
+	require("md-table-align").align_table()
+end, { desc = "Align a markdown table" })
 ```
 
