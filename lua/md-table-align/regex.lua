@@ -119,14 +119,16 @@ end
 
 ---配置マーカーから配置方式を判定する
 ---@param str string トリム済みセパレータセル
----@return string "left, center, right"
+---@return string "left, center, right, plain"
 function M.get_alignment(str)
 	if str:match("^:%-+:$") then
 		return "center"
 	elseif str:match("^%-+:$") then
 		return "right"
-	else
+	elseif str:match("^:%-+$") then
 		return "left"
+	else
+		return "plain"
 	end
 end
 
