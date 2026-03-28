@@ -52,7 +52,7 @@ end
 local function create_separator(widths, alignments)
 	local sep_cells = {}
 	for i = 1, #widths do
-		local alignment = alignments[i] or "left"
+		local alignment = alignments[i] or "plain"
 		local width = widths[i]
 		local sep_content
 
@@ -60,8 +60,10 @@ local function create_separator(widths, alignments)
 			sep_content = string.rep("-", width - 1) .. ":"
 		elseif alignment == "center" then
 			sep_content = ":" .. string.rep("-", width - 2) .. ":"
-		else
+		elseif alignment == "left" then
 			sep_content = ":" .. string.rep("-", width - 1)
+		else
+			sep_content = string.rep("-", width)
 		end
 
 		table.insert(sep_cells, sep_content)
