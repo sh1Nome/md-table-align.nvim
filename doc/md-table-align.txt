@@ -1,50 +1,53 @@
-*md-table-align.txt*  A Neovim plugin for aligning Markdown tables
+*md-table-align*  A Neovim plugin for aligning Markdown tables
 
-==============================================================================
-CONTENTS                                          *md-table-align-contents*
+MIT License Copyright (c) 2025 sh1Nome
 
-  1. Features                                     |md-table-align-features|
-  2. Usage                                        |md-table-align-usage|
-  3. Commands                                   |md-table-align-commands|
-  4. Key Mapping                             |md-table-align-keybindings|
-  5. License                                     |md-table-align-license|
-
-==============================================================================
-1. FEATURES                                      *md-table-align-features*
-
+  Features ......................................... |md-table-align-features|
+  Usage ............................................... |md-table-align-usage|
+  Commands ......................................... |md-table-align-commands|
+  Key mapping ................................... |md-table-align-keybindings|
+  align_table() ............................. |md-table-align-api-align_table|
+------------------------------------------------------------------------------
+                                                       *md-table-align-features*
 - Aligns columns to uniform width
 - Respects alignment directives from separator rows
 - Ensures minimum 1 space between pipes and content
 - Pure Lua, with no external dependencies.
 
-==============================================================================
-2. USAGE                                        *md-table-align-usage*
-
+------------------------------------------------------------------------------
+                                                          *md-table-align-usage*
 Use the |:MdTableAlign| command. This aligns the Markdown table containing
 the cursor. The plugin only aligns on command execution - it does not
 auto-align.
 
-==============================================================================
-3. COMMANDS                                    *md-table-align-commands*
-
+------------------------------------------------------------------------------
+                                                       *md-table-align-commands*
 :MdTableAlign                                *:MdTableAlign*
 
   Aligns the Markdown table containing the cursor.
 
-==============================================================================
-4. KEY MAPPING                              *md-table-align-keybindings*
-
+------------------------------------------------------------------------------
+                                                    *md-table-align-keybindings*
 The following is an example of optional key mapping: >
-
+>lua
   vim.keymap.set("n", "<leader>t", function()
           require("md-table-align").align_table()
   end, { desc = "Align a markdown table" })
 <
 
-==============================================================================
-5. LICENSE                                      *md-table-align-license*
+------------------------------------------------------------------------------
+                                                *md-table-align-api-align_table*
+                               `M.align_table`()
+Aligns the Markdown table containing the cursor.
 
-MIT
+This function performs the following steps:
+1. Finds the table boundaries around the cursor position
+2. Parses table cells and alignment directives from the separator row
+3. Calculates optimal column widths based on cell content
+4. Formats all rows with proper spacing and alignment
+5. Updates the buffer with the formatted table
 
-==============================================================================
-vim:tw=78:ts=8:ft=help:norl:
+If the cursor is not on a valid Markdown table, a notification is displayed.
+
+
+ vim:tw=78:ts=8:noet:ft=help:norl:
