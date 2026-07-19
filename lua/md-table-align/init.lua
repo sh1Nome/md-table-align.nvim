@@ -11,11 +11,28 @@
 ---@tag md-table-align-features
 ---@toc_entry Features
 
---- Use the |:MdTableAlign| command. This aligns the Markdown table containing
---- the cursor. The plugin only aligns on command execution - it does not
+--- Use the |:MdTableAlign| command, or call |md-table-align-api-align_table|
+--- from Lua. The plugin only aligns on command execution - it does not
 --- auto-align.
 ---@tag md-table-align-usage
 ---@toc_entry Usage
+
+--- Minimum column width ~
+---
+--- Separator cells need at least 3 characters (e.g. `:--`, `:-:`, `--:`),
+--- so every column is at least 3 characters wide.
+---
+--- Escaped pipes ~
+---
+--- Escape a pipe with a backslash (`\|`) to use it inside a cell.
+--- Escaped pipes are not treated as column delimiters: >
+--- >markdown
+---   | Code   | Result |
+---   | :----- | :----- |
+---   | a \| b | a \| b |
+--- <
+---@tag md-table-align-format-details
+---@toc_entry Format details
 
 --- :MdTableAlign                                *:MdTableAlign*
 ---

@@ -4,6 +4,7 @@ MIT License Copyright (c) 2025 sh1Nome
 
   Features ......................................... |md-table-align-features|
   Usage ............................................... |md-table-align-usage|
+  Format details ............................. |md-table-align-format-details|
   Commands ......................................... |md-table-align-commands|
   Key mapping ................................... |md-table-align-keybindings|
   align_table() ............................. |md-table-align-api-align_table|
@@ -16,9 +17,26 @@ MIT License Copyright (c) 2025 sh1Nome
 
 ------------------------------------------------------------------------------
                                                           *md-table-align-usage*
-Use the |:MdTableAlign| command. This aligns the Markdown table containing
-the cursor. The plugin only aligns on command execution - it does not
+Use the |:MdTableAlign| command, or call |md-table-align-api-align_table|
+from Lua. The plugin only aligns on command execution - it does not
 auto-align.
+
+------------------------------------------------------------------------------
+                                                 *md-table-align-format-details*
+Minimum column width ~
+
+Separator cells need at least 3 characters (e.g. `:--`, `:-:`, `--:`),
+so every column is at least 3 characters wide.
+
+Escaped pipes ~
+
+Escape a pipe with a backslash (`\|`) to use it inside a cell.
+Escaped pipes are not treated as column delimiters: >
+>markdown
+  | Code   | Result |
+  | :----- | :----- |
+  | a \| b | a \| b |
+<
 
 ------------------------------------------------------------------------------
                                                        *md-table-align-commands*
